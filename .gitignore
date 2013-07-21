@@ -1,0 +1,5 @@
+out/
+output/
+NativeAndroid/gen
+.DS_Store
+NativeiOS/build/

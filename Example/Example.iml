@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="Example">
+    <configurations>
+      <configuration name="Example" target-platform="Mobile" pure-as="true" main-class="reader" output-file="reader.swf" output-folder="$MODULE_DIR$/../output">
+        <dependencies target-player="11.6">
+          <entries>
+            <entry library-id="a13c0aae-66de-4ffc-8b8e-1178f17697a3">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="4.6.0" />
+        </dependencies>
+        <compiler-options>
+          <option name="resourceFilesMode" value="None" />
+        </compiler-options>
+        <packaging-air-desktop />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/reader-app.xml" package-file-name="reader">
+          <AirSigningOptions keystore-type="" />
+        </packaging-android>
+        <packaging-ios use-generated-descriptor="false">
+          <AirSigningOptions keystore-type="" use-temp-certificate="false" />
+        </packaging-ios>
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="4.6.0" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="ASLib" level="project" />
+    <orderEntry type="library" exported="" name="ASLib" level="application" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="a13c0aae-66de-4ffc-8b8e-1178f17697a3" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../qreader.ane!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

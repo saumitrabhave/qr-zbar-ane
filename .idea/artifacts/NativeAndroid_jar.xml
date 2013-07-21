@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NativeAndroid:jar">
+    <output-path>$PROJECT_DIR$/output</output-path>
+    <root id="archive" name="NativeAndroid.jar">
+      <element id="module-output" name="NativeAndroid" />
+    </root>
+  </artifact>
+</component>

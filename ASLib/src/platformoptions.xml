@@ -1,0 +1,7 @@
+<platform xmlns="http://ns.adobe.com/air/extension/3.1">
+    <sdkVersion>5.0</sdkVersion>
+    <linkerOptions>
+	    <!-- to link with the libiconv.dylib -->
+        <option>-liconv</option>
+    </linkerOptions>
+</platform>

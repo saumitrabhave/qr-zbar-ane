@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="qr-zbar-ane" default="ane">
+
+    <!-- Load the environment-specific properties -->
+    <property file="build.properties" />
+
+    <!-- Sets the FlexTasks.jar file that contains the build tasks -->
+    <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+    <target name="clean">
+      <delete file="output/library.swf"/>
+      <delete file="output/catalog.xml"/>
+      <delete file="output/extension.xml"/>
+      <delete file="output/platformoptions.xml"/>
+      <delete dir="output/res"/>
+      <delete dir="output/libs"/>
+  </target>
+
+  <target name="res" depends="clean" description="Build ane given that needed jar and swc are already present in output">
+        <unzip src="output/ASLib.swc" dest="output"/>
+
+        <copy todir="output/res">
+          <fileset dir="NativeAndroid/res"/>
+        </copy>
+
+        <copy todir="output/libs">
+            <fileset dir="NativeAndroid/libs"/>
+        </copy>
+
+        <copy todir="output/Resources">
+          <fileset dir="NativeiOS/QRZBar/ZBarSDK/Resources"/>
+        </copy>
+   </target>
+
+    <target name="ane" description="Create the AIR package" depends="res">
+        <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true">
+            <arg line="-package"/>
+            <arg line="-target ane"/>
+            <arg line="qreader.ane"/>
+            <arg line="output/extension.xml"/>
+            <arg line="-swc output/ASLib.swc"/>
+            <arg line="-platform Android-ARM"/>
+            <arg line="-C output/ library.swf"/>
+            <arg line="-C output/ NativeAndroid.jar"/>
+            <arg line="-C output/ libs"/>
+            <arg line="-C output/ res"/>
+            <arg line="-platform iPhone-ARM"/>
+            <arg line="-C output/ library.swf"/>
+            <arg line="-C output/ libQRZBar.a"/>
+            <arg line="-C output/Resources zbar-help.html"/>
+            <arg line="-platformoptions output/platformoptions.xml"/>
+            <arg line="-platform default"/>
+            <arg line="-C Default library.swf"/>
+        </java>
+        <!-- -package -target ane qreader.ane extension.xml -swc androidAS.swc -platform Android-ARM library.swf native.jar
+        ./libs ./res -platform iPhone-ARM library.swf libQRZBar.a -C Resources/ zbar-help.html -platformoptions platformoptions.xml
+        -->
+    </target>
+</project>
