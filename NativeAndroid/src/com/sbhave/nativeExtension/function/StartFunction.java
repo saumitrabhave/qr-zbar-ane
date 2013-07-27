@@ -12,6 +12,7 @@
 package com.sbhave.nativeExtension.function;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.adobe.fre.FREContext;
@@ -39,6 +40,10 @@ public class StartFunction implements FREFunction {
 			{
 				Log.i("QRStartFunction", "Creating intent for activity");
 				Intent intent = new Intent(QRExtensionContext.getInstance().getActivity(), CameraActivity.class);
+                Bundle data = new Bundle();
+                data.putString("camera",args[1].getAsString());
+                intent.putExtras(data);
+
 				Log.i("QRStartFunction", "Launching activity");
 				QRExtensionContext.getInstance().getActivity().startActivityForResult(intent,100);
 				QRExtensionContext.getInstance().setLaunched(true);

@@ -23,7 +23,7 @@
 @property (nonatomic) Boolean isRunning;
 
 -(id) initWithFREContext:(FREContext*)ctx;
--(void) scanWithMode:(uint32_t)mode;
+-(void) scanWithMode:(uint32_t)mode andCamera:(NSString*)cameraPosition;
 -(void) cancelScan;
 -(void) resetZBarController;
 -(void)dealloc;

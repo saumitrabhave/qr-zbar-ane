@@ -57,14 +57,23 @@ FREObject QR_SBH_start(FREContext ctx, void* funcData, uint32_t argc, FREObject 
     FREGetContextNativeData(ctx, (void**)&zBar);
     FREObject retVal = NULL;
     
-    if(argc != 1) { NSLog(@"Expected exactly 1 argument."); return NULL;}
+    if(argc > 2) { NSLog(@"Expected at most 2 argument."); return NULL;}
     
     uint32_t singleScan = 1;
-    FREGetObjectAsBool(argv[0], &singleScan);
+    uint32_t len;
+    uint8_t* camPos = nil;
+    NSString* camPosStr = nil;
     
+    FREGetObjectAsBool(argv[0], &singleScan);
+    FREGetObjectAsUTF8(argv[1], &len, (const uint8_t**)&camPos);
+    
+    if(camPos != NULL)
+        camPosStr = [NSString stringWithUTF8String:camPos];
+    else
+        camPosStr = @"back";
     if(!zBar.isRunning)
     {
-        [zBar scanWithMode:singleScan];
+        [zBar scanWithMode:singleScan andCamera:camPosStr];
         
         FRENewObjectFromBool((uint32_t)YES, &retVal);
     }else{

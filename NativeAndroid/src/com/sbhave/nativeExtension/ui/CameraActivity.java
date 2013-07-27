@@ -6,6 +6,7 @@
  */
 package com.sbhave.nativeExtension.ui;
 
+import android.content.pm.PackageManager;
 import com.sbhave.nativeExtension.QRExtensionContext;
 
 import net.sourceforge.zbar.Image;
@@ -38,6 +39,7 @@ public class CameraActivity extends Activity
 	private CameraPreview mPreview;
 	private Handler autoFocusHandler;
 	private DrawView dv;
+    private int camId;
 
 	TextView scanText;
 	Button scanButton;
@@ -56,6 +58,26 @@ public class CameraActivity extends Activity
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		Log.e("sbhave", "5");
 
+        PackageManager pm = getPackageManager();
+        boolean frontCam, rearCam;
+        camId = -1;
+        //Must have a targetSdk >= 9 defined in the AndroidManifest
+        frontCam = pm.hasSystemFeature("android.hardware.camera.front");
+        String requiredCam = getIntent().getExtras().getString("camera");
+
+        if (frontCam && requiredCam!= null && requiredCam.equalsIgnoreCase("front")){
+            int numberOfCameras = Camera.getNumberOfCameras();
+
+            // Find the ID of the default camera
+            Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+            for (int i = 0; i < numberOfCameras; i++) {
+                Camera.getCameraInfo(i, cameraInfo);
+                if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                    camId = i;
+                }
+            }
+        }
+
 		setContentView(freContext.getResourceId("layout.campreview"));//R.layout.campreview); 
 
 		Log.e("sbhave", "6");
@@ -63,7 +85,7 @@ public class CameraActivity extends Activity
 
 		Log.e("sbhave", "7");
 		autoFocusHandler = new Handler();
-		mCamera = getCameraInstance();
+		mCamera = getCameraInstance(camId);
 		Log.e("sbhave", "8");
 
 		scanner = freContext.getScanner();
@@ -109,7 +131,7 @@ public class CameraActivity extends Activity
 		Log.i("QRActivity", "onResume Called");
 		if(mCamera == null)
 		{
-			mCamera = getCameraInstance();
+			mCamera = getCameraInstance(camId);
 			freContext.setPreviewing(true);
 			mPreview.restartPreview(mCamera);
 		}
@@ -142,10 +164,14 @@ public class CameraActivity extends Activity
     }*/
 
 	/** A safe way to get an instance of the Camera object. */
-	public static Camera getCameraInstance(){
+	public static Camera getCameraInstance(int cameraID){
 		Camera c = null;
+
 		try {
-			c = Camera.open();
+            if (cameraID != -1)
+                c = Camera.open(cameraID);
+            else
+                c = Camera.open();
 		} catch (Exception e){
 		}
 		return c;

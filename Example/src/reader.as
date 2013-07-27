@@ -74,7 +74,7 @@ package
 			s.addEventListener(ScannerEvent.SCAN,onScan);
 			
 			//5. Actually launch the scanning UI, true means UI will automatically close after 1 scan.
-			s.launch(true);
+			s.launch(true,"front");
 			
 			// 6. Use launched property to know if the scanner is already running.
 			// Optionally call stop() to stop the scanning UI and bring the user back to the app. 
@@ -90,7 +90,7 @@ package
 			s.setTargetArea(100,"0xFF00FF00","0xFFFFFFFF"); // Values are 0xAARRGGBB [Alpha, Red, Green, Blue]
 			s.reset();  // Only QR Code By default
 			s.addEventListener(ScannerEvent.SCAN,onScan);
-			s.launch(false); // Multiple scans, until user presses back button to come back to the app.
+			s.launch(false,"rear"); // Multiple scans, until user presses back button to come back to the app.
 			
 			trace("Launched: " + s.launched); 
 			textArea.text += "\nLaunched: " + s.launched;

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="sbhave" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="NativeAndroid:jar" />
@@ -9,13 +13,19 @@
     <list default="true" id="de29a471-db74-43e1-93fd-f6de474d0f69" name="Default" comment="" />
     <ignored path="qr-zbar-ane.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.js2" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374393552969" ignored="false" />
+    <file path="/fragment.js2" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374915807522" ignored="false" />
     <file path="$PROJECT_DIR$/NativeAndroid/res/layout/main.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374337798735" ignored="false" />
     <file path="/fragment.java" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374353350649" ignored="false" />
     <file path="/qr-zbar-ane.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374388507835" ignored="false" />
     <file path="/build.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374392877969" ignored="false" />
-    <file path="$PROJECT_DIR$/Example/src/reader.as" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374394199294" ignored="false" />
-    <file path="$PROJECT_DIR$/NativeAndroid/AndroidManifest.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374394212387" ignored="false" />
+    <file path="/extension.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374519366653" ignored="false" />
+    <file path="/Config.as" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374596770902" ignored="false" />
+    <file path="/Scanner.as" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374596968242" ignored="false" />
+    <file path="/CameraActivity.java" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374918742353" ignored="false" />
+    <file path="$PROJECT_DIR$/qreader.ane!/META-INF/ANE/Android-ARM/res/layout/campreview.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374906058779" ignored="false" />
+    <file path="$PROJECT_DIR$/qreader.ane!/META-INF/ANE/Android-ARM/res/values/strings.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374906058471" ignored="false" />
+    <file path="/reader-app.xml" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374906462884" ignored="false" />
+    <file path="/StartFunction.java" changelist="de29a471-db74-43e1-93fd-f6de474d0f69" time="1374910938260" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,28 +86,97 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GetLaunchStatusFunction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/function/GetLaunchStatusFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="47" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Scanner.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Scanner.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="42" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0">
+            <state line="108" column="39" selection-start="3866" selection-end="3866" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="48" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.70283806">
+            <state line="15" column="53" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reader.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Example/src/reader.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="95" column="55" selection-start="3322" selection-end="3322" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#13#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="extension.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASLib/src/extension.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="19" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Config.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Config.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QRExtensionContext.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/QRExtensionContext.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="71" selection-start="1538" selection-end="1538" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StartFunction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/function/StartFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="45" column="16" selection-start="1859" selection-end="1859" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CameraActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/ui/CameraActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="46" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.63081396">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3502#4007#0" expanded="true" />
+                <element signature="e#4002#4003#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reader-app.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Example/src/reader-app.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="266" column="16" selection-start="11485" selection-end="11485" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QRExtension.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/QRExtension.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="86" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,19 +192,24 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Scanner.as" />
         <option value="$PROJECT_DIR$/qr-zbar-ane.xml" />
         <option value="$PROJECT_DIR$/qr-zbar-ane.properties" />
-        <option value="$PROJECT_DIR$/ASLib/src/extension.xml" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/ASLib/src/extension.xml" />
+        <option value="$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Config.as" />
+        <option value="$PROJECT_DIR$/Example/src/reader.as" />
+        <option value="$PROJECT_DIR$/Example/src/reader-app.xml" />
+        <option value="$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/function/StartFunction.java" />
+        <option value="$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Scanner.as" />
+        <option value="$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/ui/CameraActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
+    <option name="x" value="67" />
     <option name="y" value="22" />
-    <option name="width" value="1206" />
-    <option name="height" value="760" />
+    <option name="width" value="1213" />
+    <option name="height" value="778" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -171,7 +255,113 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="NativeAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NativeAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NativeAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nativeExtension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NativeAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nativeExtension" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ASLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ASLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr-zbar-ane" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ASLib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zbar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -181,26 +371,30 @@
   </component>
   <component name="PropertiesComponent">
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.17814508" />
     <property name="jdk.selected.JAVA_MODULE" value="Android 2.2 Platform" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
-    <property name="MemberChooser.sorted" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
     <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Example/src/reader-app.xml" />
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/qreader.ane!/" />
-    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="qr-zbar-ane" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.lastSelected" value="project.propGUI" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RunManager" selected="Flash App.Example">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -380,7 +574,7 @@
       <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
-    <configuration default="false" name="Example" type="FlashRunConfigurationType" factoryName="Flash App">
+    <configuration default="false" name="Example" type="FlashRunConfigurationType" factoryName="Flash App" singleton="true">
       <option name="BCName" value="Example" />
       <option name="IOSSimulatorSdkPath" value="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk" />
       <option name="adlOptions" value="" />
@@ -401,7 +595,7 @@
           <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
         </LauncherParameters>
       </option>
-      <option name="mobileRunTarget" value="Emulator" />
+      <option name="mobileRunTarget" value="AndroidDevice" />
       <option name="moduleName" value="Example" />
       <option name="overriddenMainClass" value="" />
       <option name="overriddenOutputFileName" value="" />
@@ -412,9 +606,17 @@
       <option name="screenWidth" value="0" />
       <option name="url" value="http://" />
       <option name="usbDebugPort" value="7936" />
+      <RunnerSettings RunnerId="FlexDebugRunner" />
       <RunnerSettings RunnerId="FlexRunner" />
+      <ConfigurationWrapper RunnerId="FlexDebugRunner" />
       <ConfigurationWrapper RunnerId="FlexRunner" />
-      <method />
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="NativeAndroid:jar" />
+        </option>
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_Ant Task ANE" />
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Flash App.Example" />
@@ -425,6 +627,23 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="de29a471-db74-43e1-93fd-f6de474d0f69" name="Default" comment="" />
@@ -434,30 +653,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="22" width="1206" height="760" extended-state="0" />
-    <editor active="false" />
+    <frame x="67" y="22" width="1213" height="778" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39969605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6703125" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24850042" sideWeight="0.60030395" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -530,20 +749,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/function/GetLaunchStatusFunction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="47" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Scanner.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="42" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="52" column="48" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.0">
@@ -572,20 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Config.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="24" selection-start="275" selection-end="275" vertical-scroll-proportion="0.30050084" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Example/src/reader.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="0" selection-start="1457" selection-end="1457" vertical-scroll-proportion="0.33247423">
-          <folding>
-            <element signature="e#13#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/function/GetLaunchStatusFunction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="47" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
@@ -598,17 +789,79 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Scanner.as">
+    <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/QRExtension.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="42" selection-start="1933" selection-end="1933" vertical-scroll-proportion="0.0">
+        <state line="27" column="86" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/QRExtensionContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="71" selection-start="1538" selection-end="1538" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Config.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Example/src/reader.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="55" selection-start="3322" selection-end="3322" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#13#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASLib/src/extension.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="19" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="48" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.70283806">
+        <state line="15" column="53" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Example/src/reader-app.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="266" column="16" selection-start="11485" selection-end="11485" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/function/StartFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="16" selection-start="1859" selection-end="1859" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASLib/src/com/sbhave/nativeExtensions/zbar/Scanner.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="39" selection-start="3866" selection-end="3866" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NativeAndroid/src/com/sbhave/nativeExtension/ui/CameraActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="46" selection-start="1983" selection-end="1983" vertical-scroll-proportion="0.63081396">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3502#4007#0" expanded="true" />
+            <element signature="e#4002#4003#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -631,7 +884,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>Detection</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -655,7 +908,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.6</last-edited>
+          <last-edited>Android 2.2 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

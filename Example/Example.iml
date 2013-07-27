@@ -3,7 +3,7 @@
   <component name="FlexBuildConfigurationManager" active="Example">
     <configurations>
       <configuration name="Example" target-platform="Mobile" pure-as="true" main-class="reader" output-file="reader.swf" output-folder="$MODULE_DIR$/../output">
-        <dependencies target-player="11.6">
+        <dependencies>
           <entries>
             <entry library-id="a13c0aae-66de-4ffc-8b8e-1178f17697a3">
               <dependency linkage="Merged" />
@@ -15,11 +15,11 @@
           <option name="resourceFilesMode" value="None" />
         </compiler-options>
         <packaging-air-desktop />
-        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/reader-app.xml" package-file-name="reader">
-          <AirSigningOptions keystore-type="" />
+        <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/reader-app.xml" package-file-name="Example">
+          <AirSigningOptions keystore-path="$MODULE_DIR$/../../../nvault/QR/bin/abc123.p12" use-temp-certificate="false" />
         </packaging-android>
-        <packaging-ios use-generated-descriptor="false">
-          <AirSigningOptions keystore-type="" use-temp-certificate="false" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/reader-app.xml" package-file-name="Example">
+          <AirSigningOptions keystore-path="$MODULE_DIR$/../../../creds/Certificates.p12" provisioning-profile-path="$MODULE_DIR$/../../../creds/qrDemo (1).mobileprovision" />
         </packaging-ios>
       </configuration>
     </configurations>

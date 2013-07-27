@@ -19,7 +19,7 @@
                 <initializer>QRSBHExtInitializer</initializer>
                 <finalizer>QRSBHExtFinalizer</finalizer>
             </applicationDeployment>
-        </platform> 
+        </platform>
     <platform name="Android-ARM">
       <applicationDeployment>
         <nativeLibrary>NativeAndroid.jar</nativeLibrary>

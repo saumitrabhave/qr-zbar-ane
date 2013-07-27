@@ -44,13 +44,20 @@
     singleScan =YES;
 }
 
-- (void) scanWithMode:(uint32_t)mode;
+- (void) scanWithMode:(uint32_t)mode andCamera:(NSString *)cameraPosition;
 {
     NSLog(@"call scan With Mode %u",mode);
     UIButton* scanButton = nil;
     //[[[[[[UIApplication sharedApplication] windows] objectAtIndex:0] rootViewController] view] addSubview:[self view]];
     singleScan = mode;
     isRunning = YES;
+    
+    if ([cameraPosition isEqualToString:@"front"] && [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+        reader.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+    }else{
+        reader.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    }
+    
     id delegate = [[UIApplication sharedApplication] delegate];
     [[[delegate window] rootViewController] presentModalViewController:reader animated:YES];
     

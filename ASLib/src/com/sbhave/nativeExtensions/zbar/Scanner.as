@@ -100,8 +100,8 @@ package com.sbhave.nativeExtensions.zbar
 		//at least 1 code. If false, the scanner will never return to the application and will keep firing DATA events
 		//only way to bring user back to application is by calling stop() function.
 		
-		public function launch(singleScan:Boolean):Boolean{
-			var ret:Object = extCtx.call("start",singleScan);
+		public function launch(singleScan:Boolean,cameraLocation:String="back"):Boolean{
+			var ret:Object = extCtx.call("start",singleScan,cameraLocation);
 			
 			if(ret==null)
 				return false;
