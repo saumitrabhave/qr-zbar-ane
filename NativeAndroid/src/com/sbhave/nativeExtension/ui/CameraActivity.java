@@ -146,7 +146,7 @@ public class CameraActivity extends Activity
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-	    if ((keyCode == KeyEvent.KEYCODE_BACK))
+	    if ((keyCode == KeyEvent.KEYCODE_BACK) || (keyCode == KeyEvent.KEYCODE_HOME))
 	    {
 	    	freContext.setLaunched(false);
 	        finish();
