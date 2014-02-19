@@ -27,9 +27,11 @@ import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CameraActivity extends Activity
@@ -65,7 +67,7 @@ public class CameraActivity extends Activity
         frontCam = pm.hasSystemFeature("android.hardware.camera.front");
         String requiredCam = getIntent().getExtras().getString("camera");
 
-        if (frontCam && requiredCam!= null && requiredCam.equalsIgnoreCase("front")){
+        if ((frontCam && requiredCam != null && requiredCam.equalsIgnoreCase("front")) || (mCamera = getCameraInstance(camId)) == null) {
             int numberOfCameras = Camera.getNumberOfCameras();
 
             // Find the ID of the default camera
@@ -85,7 +87,9 @@ public class CameraActivity extends Activity
 
 		Log.e("sbhave", "7");
 		autoFocusHandler = new Handler();
-		mCamera = getCameraInstance(camId);
+        if(mCamera == null) {
+            mCamera = getCameraInstance(camId);
+        }
 		Log.e("sbhave", "8");
 
 		scanner = freContext.getScanner();
@@ -107,7 +111,21 @@ public class CameraActivity extends Activity
 		scanText = (TextView)findViewById(freContext.getResourceId("id.scanText"));
 
 		scanButton = (Button)findViewById(freContext.getResourceId("id.ScanButton"));
-		scanButton.setVisibility(View.INVISIBLE);
+		
+        if(freContext.isSingleScan()) {
+        	LinearLayout.LayoutParams invisibleParams = new LinearLayout.LayoutParams(
+                    LayoutParams.MATCH_PARENT, 0, 0);      
+        	LinearLayout.LayoutParams previewParams = new LinearLayout.LayoutParams(
+                            LayoutParams.MATCH_PARENT,
+                            LayoutParams.MATCH_PARENT, 1.0f);
+
+        	scanText.setLayoutParams(invisibleParams);
+        	scanButton.setLayoutParams(invisibleParams);
+    		scanButton.setVisibility(View.INVISIBLE);
+        	scanText.setVisibility(View.INVISIBLE);
+        	preview.setLayoutParams(previewParams);
+        }
+
 
 		scanButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -146,7 +164,7 @@ public class CameraActivity extends Activity
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-	    if ((keyCode == KeyEvent.KEYCODE_BACK) || (keyCode == KeyEvent.KEYCODE_HOME))
+	    if ((keyCode == KeyEvent.KEYCODE_BACK))
 	    {
 	    	freContext.setLaunched(false);
 	        finish();
@@ -220,7 +238,6 @@ public class CameraActivity extends Activity
 					freContext.setPreviewing(false);
 					mCamera.setPreviewCallback(null);
 					mCamera.stopPreview();
-					scanButton.setVisibility(View.VISIBLE);
 				}else{
 					releaseCamera();
 					freContext.setLaunched(false);
