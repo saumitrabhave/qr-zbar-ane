@@ -1,4 +1,27 @@
 /*
+ * Copyright (c) 2014 Saumitra R Bhave
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * File : /Users/saumib/projects/repos/qr-zbar-ane/NativeAndroid/src/com/sbhave/nativeExtension/ui/CameraPreview.java
+ */
+
+/*
  * Barebones implementation of displaying camera preview.
  * 
  * Created by lisah0 on 2012-02-24
@@ -6,6 +29,7 @@
 package com.sbhave.nativeExtension.ui;
 
 import java.io.IOException;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -33,6 +57,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private Camera mCamera;
     private PreviewCallback previewCallback;
     private AutoFocusCallback autoFocusCallback;
+    private Paint linePaint = new Paint();
 
     public CameraPreview(Context context, Camera camera,
                          PreviewCallback previewCb,
@@ -41,21 +66,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mCamera = camera;
         previewCallback = previewCb;
         autoFocusCallback = autoFocusCb;
-
-        /* 
-         * Set camera to continuous focus if supported, otherwise use
-         * software auto-focus. Only works for API level >=9.
-         */
-        /*
-        Camera.Parameters parameters = camera.getParameters();
-        for (String f : parameters.getSupportedFocusModes()) {
-            if (f == Parameters.FOCUS_MODE_CONTINUOUS_PICTURE) {
-                mCamera.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-                autoFocusCallback = null;
-                break;
-            }
-        }
-        */
 
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
@@ -109,7 +119,15 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             mCamera.setPreviewDisplay(mHolder);
             mCamera.setPreviewCallback(previewCallback);
             mCamera.startPreview();
-            mCamera.autoFocus(autoFocusCallback);
+
+            Camera.Parameters params = mCamera.getParameters();
+            List<String> focusModes = params.getSupportedFocusModes();
+            if(focusModes.contains(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
+                params.setFocusMode(Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                mCamera.setParameters(params);
+            }else{
+                mCamera.autoFocus(autoFocusCallback);
+            }
         } catch (Exception e){
             Log.d("DBG", "Error starting camera preview: " + e.getMessage());
         }

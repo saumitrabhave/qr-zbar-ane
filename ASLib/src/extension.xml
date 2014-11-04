@@ -1,34 +1,47 @@
-<!--////////////////////////////////////////////////////////////////////////////////////////////////////	
-//	ADOBE SYSTEMS INCORPORATED																		  //
-//	Copyright 2011 Adobe Systems Incorporated														  //
-//	All Rights Reserved.																			  //
-//																									  //
-//	NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the		  //
-//	terms of the Adobe license agreement accompanying it.  If you have received this file from a	  //
-//	source other than Adobe, then your use, modification, or distribution of it requires the prior	  //
-//	written permission of Adobe.																	  //
-/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--
+  ~ Copyright (c) 2014 Saumitra R Bhave
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  ~ THE SOFTWARE.
+  ~
+  ~ File : /Users/saumib/projects/repos/qr-zbar-ane/ASLib/src/extension.xml
+  -->
 
-<extension xmlns="http://ns.adobe.com/air/extension/3.1">
+<extension xmlns="http://ns.adobe.com/air/extension/3.6">
   <id>com.sbhave.nativeExtensions.zbar</id>
   <versionNumber>1</versionNumber>
   <platforms>
-    <platform name="iPhone-ARM">
+      <!-- Removing iPhone as ANE 2.0 is yest to be implemented here. -->
+      <!--<platform name="iPhone-ARM">
             <applicationDeployment>
                 <nativeLibrary>libQRZBar.a</nativeLibrary>
                 <initializer>QRSBHExtInitializer</initializer>
                 <finalizer>QRSBHExtFinalizer</finalizer>
             </applicationDeployment>
-        </platform>
-    <platform name="Android-ARM">
-      <applicationDeployment>
-        <nativeLibrary>NativeAndroid.jar</nativeLibrary>
-        <initializer>com.sbhave.nativeExtension.QRExtension</initializer>
-        <finalizer>com.sbhave.nativeExtension.QRExtension</finalizer>
-      </applicationDeployment>
-    </platform>
-    <platform name="default">
-        <applicationDeployment/>
-    </platform>
+        </platform> -->
+      <platform name="Android-ARM">
+        <applicationDeployment>
+          <nativeLibrary>NativeAndroid.jar</nativeLibrary>
+          <initializer>com.sbhave.nativeExtension.QRExtension</initializer>
+          <finalizer>com.sbhave.nativeExtension.QRExtension</finalizer>
+        </applicationDeployment>
+      </platform>
+      <platform name="default">
+          <applicationDeployment/>
+      </platform>
   </platforms>
 </extension>
