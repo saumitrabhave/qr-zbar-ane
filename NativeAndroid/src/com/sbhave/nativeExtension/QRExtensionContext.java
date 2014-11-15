@@ -78,6 +78,7 @@ public class QRExtensionContext extends FREContext {
         mPreviewManager.destroy();
         scanner.destroy();
         scanner = null;
+        mPreviewManager = null;
         Log.i("QRExtensionContext", "dispose()");
     }
 

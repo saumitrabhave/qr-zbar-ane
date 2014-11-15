@@ -32,14 +32,12 @@ import java.io.IOException;
 import java.util.List;
 
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.util.Log;
 
-import android.view.View;
-import android.view.Surface;
-import android.view.SurfaceView;
-import android.view.SurfaceHolder;
+import android.view.*;
 
 import android.content.Context;
 
@@ -50,6 +48,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.Parameters;
+import com.sbhave.nativeExtension.QRExtensionContext;
 
 /** A basic Camera preview class */
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
@@ -92,6 +91,18 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
         this.restartPreview(mCamera);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        String data = "";
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1 ){
+            float x = event.getAxisValue(MotionEvent.AXIS_X);
+            float y = event.getAxisValue(MotionEvent.AXIS_Y);
+            data = Float.toString(x) + "," + Float.toString(y);
+        }
+        QRExtensionContext.getInstance().dispatchStatusEventAsync("previewTouched",data);
+        return true;
+    }
     
     public void restartPreview(Camera c)
     {
@@ -114,7 +125,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
 
         try {
             // Hard code camera surface rotation 90 degs to match Activity view in portrait
-            mCamera.setDisplayOrientation(90);
+            //mCamera.setDisplayOrientation(90);
 
             mCamera.setPreviewDisplay(mHolder);
             mCamera.setPreviewCallback(previewCallback);

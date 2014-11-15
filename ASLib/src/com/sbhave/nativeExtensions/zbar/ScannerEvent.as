@@ -28,6 +28,8 @@ package com.sbhave.nativeExtensions.zbar
 	public class ScannerEvent extends Event
 	{
 		public static const SCAN:String = "com.sbhave.nativeExtensions.zbar.scanEvent";
+        public static const PREVIEW_TOUCH:String = "com.sbhave.nativeExtensions.zbar.previewTouched";
+
 		private var _data:String;
 		
 		public function ScannerEvent(type:String, data:String, bubbles:Boolean=false, cancelable:Boolean=false)

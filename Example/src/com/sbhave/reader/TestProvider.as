@@ -23,6 +23,7 @@
 
 package com.sbhave.reader {
 import com.sbhave.reader.tests.MultiScanSimple;
+import com.sbhave.reader.tests.PreviewOrientation;
 import com.sbhave.reader.tests.SingleScanSimple;
 
 public class TestProvider {
@@ -46,6 +47,8 @@ public class TestProvider {
          */
         testsToRun.push(new SingleScanSimple());
         testsToRun.push(new MultiScanSimple());
+        testsToRun.push(new PreviewOrientation());
+
 
     }
 

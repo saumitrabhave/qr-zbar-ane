@@ -62,7 +62,7 @@ public class MultiScanSimple extends TestCase{
         s.addEventListener(ScannerEvent.SCAN,onScan);
         s.startPreview("rear"); // Multiple scans, until user presses back button to come back to the app.
         s.attachScannerToPreview();
-        }
+    }
 
     private function onScan(event:ScannerEvent):void {
         if(ctr <= 5) {

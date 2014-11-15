@@ -311,6 +311,9 @@ public class Scanner extends EventDispatcher {
             case "data":
                 dispatchEvent(new ScannerEvent(ScannerEvent.SCAN,e.level));
                 break;
+            case "previewTouched":
+                dispatchEvent(new ScannerEvent(ScannerEvent.PREVIEW_TOUCH,e.level));
+                break;
         }
     }
 }

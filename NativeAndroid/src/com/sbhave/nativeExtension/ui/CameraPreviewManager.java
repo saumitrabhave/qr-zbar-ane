@@ -28,6 +28,7 @@ import android.app.Activity;
 import android.hardware.Camera;
 import android.os.Build;
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -40,6 +41,7 @@ import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 public class CameraPreviewManager {
 
@@ -73,10 +75,18 @@ public class CameraPreviewManager {
     private Handler autoFocusHandler= new Handler();
     private int mCameraId = -1;
     private int _x=0,_y=0,_w=-1,_h=-1;
+    private final HandlerThread mCameraThread;
+    private final Handler mCameraHandler;
+    private Semaphore mCameraSemaphore;
+    private List<Camera.Size> mPreviewSizes;
 
     public CameraPreviewManager(Activity activity,QRExtensionContext ctx) {
         mActivity = activity;
         mContext = ctx;
+        mCameraThread = new HandlerThread("CameraThread");
+        mCameraThread.start();
+        mCameraHandler = new Handler(mCameraThread.getLooper());
+        mCameraSemaphore = new Semaphore(1);
     }
 
     public boolean startPreview(int cameraId){
@@ -124,8 +134,13 @@ public class CameraPreviewManager {
 
     public void resumePreview(){
         if(isPreviewOn && mCamera != null){
-            Camera c = getCameraInstance(mCameraId);
-            mPreview.restartPreview(c);
+            final Camera c = getCameraInstance(mCameraId);
+            mCameraHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mPreview.restartPreview(c);
+                }
+            });
         }
     }
 
@@ -133,11 +148,6 @@ public class CameraPreviewManager {
         if(mCamera == null){
             mCameraId = cameraId;
             mCamera = getCameraInstance(mCameraId);
-            Camera.Parameters ps = mCamera.getParameters();
-            Log.e("sbhave", "Preview Sizes");
-            for(Camera.Size s : ps.getSupportedPreviewSizes()){
-                Log.e("sbhave", "Width: " + s.width + " Height: " + s.height);
-            }
             mPreview = new CameraPreview(mActivity, mCamera, previewCb, autoFocusCB);
             setPosition(x,y);
             setLayout(w,h);
@@ -180,38 +190,92 @@ public class CameraPreviewManager {
 
     private void addPreviewToStage() {
         if(mPreview != null){
+            mPreview.setZOrderMediaOverlay(true);
             mPreview.setZOrderOnTop(true);
             ViewGroup rootView = (ViewGroup)mActivity.getWindow().getDecorView().findViewById(android.R.id.content);
             rootView.addView(mPreview);
         }
     }
 
-    private Camera getCameraInstance(int cameraID){
-        Camera c = null;
+    private Camera getCameraInstance(final int cameraID){
         try {
-            if (cameraID != -1)
-                c = Camera.open(cameraID);
-            else
-                c = Camera.open();
-        } catch (Exception e){
-            Log.e("FRE","Exception while acquiring Camera",e);
+            mCameraSemaphore.acquire();     // Need Access to Camera Thread
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore");
         }
-        return c;
+        mCameraHandler.postAtFrontOfQueue(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (cameraID != -1)
+                        mCamera = Camera.open(cameraID);
+                    else
+                        mCamera = Camera.open();
+                    mCameraSemaphore.release();  // Camera access Complete
+                } catch (Exception e){
+                    Log.e("FRE","Exception while acquiring Camera",e);
+                }
+
+            }
+        });
+        try {
+            mCameraSemaphore.acquire();  // Block Till Camera access Complete
+            mCameraSemaphore.release();  // Release the Semaphore for other
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore Release");
+        }
+        return mCamera;
     }
 
     public List<Camera.Size> getPreviewSizes(){
-        if(mCamera != null){
-            return mCamera.getParameters().getSupportedPreviewSizes();
+        try {
+            mCameraSemaphore.acquire();     // Need Access to Camera Thread
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore");
         }
-        return null;
+        mCameraHandler.postAtFrontOfQueue(new Runnable() {
+            @Override
+            public void run() {
+                if(mCamera != null){
+                    mPreviewSizes = mCamera.getParameters().getSupportedPreviewSizes();
+                }
+                mPreviewSizes = null;
+                mCameraSemaphore.release();  // Camera access Complete
+            }
+        });
+        try {
+            mCameraSemaphore.acquire();  // Block Till Camera access Complete
+            mCameraSemaphore.release();  // Release the Semaphore for other
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore Release");
+        }
+        return mPreviewSizes;
+
     }
 
     private void releaseCamera() {
-        if (mCamera != null) {
+        try {
+            mCameraSemaphore.acquire();     // Need Access to Camera Thread
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore");
+        }
+        mCameraHandler.postAtFrontOfQueue(new Runnable() {
+            @Override
+            public void run() {
+                if (mCamera != null) {
 
-            mCamera.setPreviewCallback(null);
-            mCamera.release();
-            mCamera = null;
+                    mCamera.setPreviewCallback(null);
+                    mCamera.release();
+                    mCamera = null;
+                }
+                mCameraSemaphore.release();  // Camera access Complete
+            }
+        });
+        try {
+            mCameraSemaphore.acquire();  // Block Till Camera access Complete
+            mCameraSemaphore.release();  // Release the Semaphore for other
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore Release");
         }
     }
 
@@ -236,28 +300,74 @@ public class CameraPreviewManager {
             mPreview = null;
             releaseCamera();
         }
-    }
-
-    public void setOrientation(int orientation) {
-        if(mCamera != null){
-            if (android.os.Build.VERSION.SDK_INT <= Build.VERSION_CODES.HONEYCOMB_MR2 ){
-                mCamera.stopPreview();
-                mCamera.setDisplayOrientation(orientation);
-                mCamera.startPreview();
-            }
-            mCamera.setDisplayOrientation(orientation);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 ){
+            mCameraThread.quitSafely();
+        }else{
+            mCameraThread.quit();
         }
     }
 
-    public void setPreviewSize(int w, int h) {
-        if(mCamera != null){
-            Camera.Parameters params = mCamera.getParameters();
-            if(params.getPreviewSize().width != w || params.getPreviewSize().height != h){
-                mCamera.stopPreview();
-                params.setPreviewSize(w,h);
-                mCamera.setParameters(params);
-                mCamera.startPreview();
-            }
+    public void setOrientation(final int orientation) {
+        try {
+            mCameraSemaphore.acquire();     // Need Access to Camera Thread
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore");
         }
+        mCameraHandler.postAtFrontOfQueue(new Runnable() {
+            @Override
+            public void run() {
+                if(mCamera != null){
+                    Camera.Parameters params = mCamera.getParameters();
+                    params.setRotation(orientation);
+                    if (android.os.Build.VERSION.SDK_INT <= Build.VERSION_CODES.HONEYCOMB_MR2 ){
+                        mCamera.stopPreview();
+                        mCamera.setDisplayOrientation(orientation);
+                        mCamera.startPreview();
+                    }
+                    mCamera.setDisplayOrientation(orientation);
+                }
+                mCameraSemaphore.release();  // Camera access Complete
+            }
+        });
+        try {
+            mCameraSemaphore.acquire();  // Block Till Camera access Complete
+            mCameraSemaphore.release();  // Release the Semaphore for other
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore Release");
+        }
+    }
+
+    public void setPreviewSize(final int w, final int h) {
+        try {
+            mCameraSemaphore.acquire();     // Need Access to Camera Thread
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore");
+        }
+        mCameraHandler.postAtFrontOfQueue(new Runnable() {
+            @Override
+            public void run() {
+                if(mCamera != null){
+                    Camera.Parameters params = mCamera.getParameters();
+                    if(params.getPreviewSize().width != w || params.getPreviewSize().height != h){
+                        mCamera.stopPreview();
+                        params.setPreviewSize(w,h);
+                        mCamera.setParameters(params);
+                        mCamera.startPreview();
+                    }
+                }
+                mCameraSemaphore.release();  // Camera access Complete
+            }
+        });
+        try {
+            mCameraSemaphore.acquire();  // Block Till Camera access Complete
+            mCameraSemaphore.release();  // Release the Semaphore for other
+        } catch (InterruptedException e) {
+            Log.e("FRE", "Exception in Semaphore Release");
+        }
+    }
+
+    public boolean previewTouch(int x, int y){
+
+        return true;
     }
 }
