@@ -149,6 +149,7 @@ public class CameraPreviewManager {
             mCameraId = cameraId;
             mCamera = getCameraInstance(mCameraId);
             mPreview = new CameraPreview(mActivity, mCamera, previewCb, autoFocusCB);
+            Log.e("FRE","X: "+x + " Y: " + y + " W: " + w + " H: " + h);
             setPosition(x,y);
             setLayout(w,h);
             addPreviewToStage();
@@ -288,8 +289,10 @@ public class CameraPreviewManager {
 
     private final Runnable doAutoFocus = new Runnable() {
         public void run() {
-            if (isPreviewOn)
+            if (isPreviewOn && mCamera != null){
                 mCamera.autoFocus(autoFocusCB);
+            }
+
         }
     };
 
@@ -364,10 +367,5 @@ public class CameraPreviewManager {
         } catch (InterruptedException e) {
             Log.e("FRE", "Exception in Semaphore Release");
         }
-    }
-
-    public boolean previewTouch(int x, int y){
-
-        return true;
     }
 }

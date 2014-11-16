@@ -56,6 +56,7 @@ public class Harness {
         lblDescription.textField.textColor = 0x0000AA;
         testVBox = new VBox(window,0,0);
         logArea = new Text(window,0,0);
+        logArea.editable = false;
         logArea.text = "";
         this.reDraw();
         Harness.testStage = testVBox;

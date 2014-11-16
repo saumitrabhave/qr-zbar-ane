@@ -65,7 +65,7 @@ public class MultiScanSimple extends TestCase{
     }
 
     private function onScan(event:ScannerEvent):void {
-        if(ctr <= 5) {
+        if(ctr < 5) {
             Logger.printLine("Scan Event " + event.data);
             ctr++;
         }else{

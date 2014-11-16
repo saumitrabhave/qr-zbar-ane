@@ -13,7 +13,6 @@
         </dependencies>
         <compiler-options>
           <option name="resourceFilesMode" value="None" />
-          <option name="additionalOptions" value="--swf-version=14" />
         </compiler-options>
         <packaging-air-desktop />
         <packaging-android enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/reader-app.xml" package-file-name="Example">

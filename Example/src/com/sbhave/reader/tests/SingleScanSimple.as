@@ -71,7 +71,7 @@ public class SingleScanSimple extends TestCase{
     }
 
     private function onScan(event:ScannerEvent):void {
-        if(ctr <= 1) {
+        if(ctr < 1) {
             Logger.printLine("Scan Event " + event.data);
             ctr++;
         }else{
