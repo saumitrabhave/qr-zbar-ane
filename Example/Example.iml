@@ -19,7 +19,7 @@
           <AirSigningOptions keystore-path="$MODULE_DIR$/../../../nvault/QR/bin/abc123.p12" use-temp-certificate="false" />
         </packaging-android>
         <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/reader-app.xml" package-file-name="Example">
-          <AirSigningOptions keystore-path="$MODULE_DIR$/../../../creds/Certificates.p12" provisioning-profile-path="$MODULE_DIR$/../../../creds/qrDemo (1).mobileprovision" />
+          <AirSigningOptions sdk="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk" keystore-path="$MODULE_DIR$/../../../creds/abc123-ios.p12" provisioning-profile-path="$MODULE_DIR$/../../../creds/sbhavedemo.mobileprovision" />
         </packaging-ios>
       </configuration>
     </configurations>

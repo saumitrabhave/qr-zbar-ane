@@ -38,7 +38,7 @@
 
 	<!-- A universally unique application identifier. Must be unique across all AIR applications.
 	Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-	<id>reader</id>
+	<id>com.sbhave.cool</id>
 
 	<!-- Used as the filename for the application. Required. -->
 	<filename>reader</filename>

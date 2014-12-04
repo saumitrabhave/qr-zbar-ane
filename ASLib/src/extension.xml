@@ -25,14 +25,13 @@
   <id>com.sbhave.nativeExtensions.zbar</id>
   <versionNumber>1</versionNumber>
   <platforms>
-      <!-- Removing iPhone as ANE 2.0 is yest to be implemented here. -->
-      <!--<platform name="iPhone-ARM">
+      <platform name="iPhone-ARM">
             <applicationDeployment>
                 <nativeLibrary>libQRZBar.a</nativeLibrary>
                 <initializer>QRSBHExtInitializer</initializer>
                 <finalizer>QRSBHExtFinalizer</finalizer>
             </applicationDeployment>
-        </platform> -->
+        </platform>
       <platform name="Android-ARM">
         <applicationDeployment>
           <nativeLibrary>NativeAndroid.jar</nativeLibrary>

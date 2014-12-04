@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 RANCON. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface QRZBarTests : SenTestCase
+@interface QRZBarTests : XCTestCase
 
 @end

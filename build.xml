@@ -44,12 +44,11 @@
             <arg line="-C output/ NativeAndroid.jar"/>
             <arg line="-C output/ libs"/>
             <arg line="-C output/ res"/>
-            <!-- Removing iPhone as ANE 2.0 is yest to be implemented here. -->
-            <!-- <arg line="-platform iPhone-ARM"/>
+            <arg line="-platform iPhone-ARM"/>
             <arg line="-C output/ library.swf"/>
             <arg line="-C output/ libQRZBar.a"/>
             <arg line="-C output/Resources zbar-help.html"/>
-            <arg line="-platformoptions output/platformoptions.xml"/> -->
+            <arg line="-platformoptions output/platformoptions.xml"/>
             <arg line="-platform default"/>
             <arg line="-C Default library.swf"/>
         </java>

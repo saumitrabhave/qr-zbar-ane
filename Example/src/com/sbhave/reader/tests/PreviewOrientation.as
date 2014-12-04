@@ -83,8 +83,6 @@ public class PreviewOrientation extends TestCase{
                 degrees = 270;
                 break;
             case StageOrientation.UPSIDE_DOWN:
-
-                return;
                 degrees = 180;
                 break;
             case StageOrientation.ROTATED_RIGHT:
@@ -137,7 +135,7 @@ public class PreviewOrientation extends TestCase{
      */
     private function onChanging(event:StageOrientationEvent):void {
         var beforeOrientation:String = Harness.testStage.stage.orientation;
-        trace("Before: "+event.beforeOrientation + " After: " + event.afterOrientation);
+        trace("Before: "+ beforeOrientation + " After: " + event.afterOrientation);
         if(
         (beforeOrientation == StageOrientation.DEFAULT && event.afterOrientation == StageOrientation.UPSIDE_DOWN)
         ||
@@ -146,6 +144,8 @@ public class PreviewOrientation extends TestCase{
         (beforeOrientation == StageOrientation.ROTATED_LEFT && event.afterOrientation == StageOrientation.ROTATED_RIGHT)
         ||
         (beforeOrientation == StageOrientation.ROTATED_RIGHT && event.afterOrientation == StageOrientation.ROTATED_LEFT)
+        ||
+        (beforeOrientation == event.afterOrientation)
         ){
             onResize(new Event("sbhave.changing."+event.afterOrientation));
         }

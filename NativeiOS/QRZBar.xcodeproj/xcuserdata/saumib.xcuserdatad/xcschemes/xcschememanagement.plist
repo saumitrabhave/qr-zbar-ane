@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>cool.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>BFD1269014EBB7D800042533</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6AD2D561A20D580004A13ED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6AD2D6E1A20D580004A13ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>

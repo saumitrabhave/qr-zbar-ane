@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFD1268014EBB7D700042533"
-               BuildableName = "libQRZBar.a"
-               BlueprintName = "QRZBar"
+               BlueprintIdentifier = "C6AD2D561A20D580004A13ED"
+               BuildableName = "reader.app"
+               BlueprintName = "cool"
+               ReferencedContainer = "container:QRZBar.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C6AD2D6E1A20D580004A13ED"
+               BuildableName = "coolTests.xctest"
+               BlueprintName = "coolTests"
                ReferencedContainer = "container:QRZBar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,17 +42,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BFD1269014EBB7D800042533"
-               BuildableName = "QRZBarTests.xctest"
-               BlueprintName = "QRZBarTests"
-               ReferencedContainer = "container:QRZBar.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C6AD2D561A20D580004A13ED"
+            BuildableName = "reader.app"
+            BlueprintName = "cool"
+            ReferencedContainer = "container:QRZBar.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -49,15 +62,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BFD1268014EBB7D700042533"
-            BuildableName = "libQRZBar.a"
-            BlueprintName = "QRZBar"
+            BlueprintIdentifier = "C6AD2D561A20D580004A13ED"
+            BuildableName = "reader.app"
+            BlueprintName = "cool"
             ReferencedContainer = "container:QRZBar.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -67,6 +80,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C6AD2D561A20D580004A13ED"
+            BuildableName = "reader.app"
+            BlueprintName = "cool"
+            ReferencedContainer = "container:QRZBar.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

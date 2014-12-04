@@ -24,6 +24,7 @@ package com.sbhave.reader.tests {
 import com.sbhave.nativeExtensions.zbar.Config;
 import com.sbhave.nativeExtensions.zbar.Scanner;
 import com.sbhave.nativeExtensions.zbar.ScannerEvent;
+import com.sbhave.nativeExtensions.zbar.Size;
 import com.sbhave.nativeExtensions.zbar.Symbology;
 import com.sbhave.reader.Command;
 import com.sbhave.reader.Harness;
@@ -78,8 +79,6 @@ public class SizeAndPosition extends TestCase{
                 degrees = 270;
                 break;
             case StageOrientation.UPSIDE_DOWN:
-
-                return;
                 degrees = 180;
                 break;
             case StageOrientation.ROTATED_RIGHT:
@@ -135,6 +134,15 @@ public class SizeAndPosition extends TestCase{
         trace("starting Back Cam");
         currentCam = "";
         s.startPreview(currentCam,50,150,300,300);
+
+        var x:Vector.<Size> = s.getAvailablePreviewSizes();
+        for each(var sz:Size in x){
+            trace("Supported: " + sz.width + "x" + sz.height);
+            if(sz.width == 640){
+                s.setPreviewSize(sz);
+            }
+        }
+
         onResize(new Event("DUMMY")); // Align on Launch
     }
 
