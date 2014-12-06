@@ -326,8 +326,9 @@ public class CameraPreviewManager {
                         mCamera.stopPreview();
                         mCamera.setDisplayOrientation(orientation);
                         mCamera.startPreview();
+                    }else{
+                        mCamera.setDisplayOrientation(orientation);
                     }
-                    mCamera.setDisplayOrientation(orientation);
                 }
                 mCameraSemaphore.release();  // Camera access Complete
             }
