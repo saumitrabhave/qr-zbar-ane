@@ -280,8 +280,69 @@ SBH_FREFUNCTION(detachScanner)
     return retVal;
 }
 
-//TODO
-SBH_FREFUNCTION(scanBitmap){ return NULL;}
+//Implementation Inspired From: https://github.com/luarpro/BitmapDataQRCodeScanner
+SBH_FREFUNCTION(scanBitmap)
+{
+    FREObject retVal = NULL;
+    
+    if(argc != 1) { NSLog(@"Expected 1 argument [BitmapData]."); return NULL;}
+    
+    FREObject       objectBitmapData = argv[0];
+    FREBitmapData2  bitmapData;
+    
+    FREAcquireBitmapData2(objectBitmapData, &bitmapData);
+    
+    int width       = bitmapData.width;
+    int height      = bitmapData.height;
+    
+    CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, bitmapData.bits32, (width * height * 4), NULL);
+    
+    int                     bitsPerComponent    = 8;
+    int                     bitsPerPixel        = 32;
+    int                     bytesPerRow         = 4 * width;
+    CGColorSpaceRef         colorSpaceRef       = CGColorSpaceCreateDeviceRGB();
+    CGBitmapInfo            bitmapInfo;
+    
+    if( bitmapData.hasAlpha) {
+        if(bitmapData.isPremultiplied)
+            bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst;
+        else
+            bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaFirst;
+    } else {
+        bitmapInfo = kCGBitmapByteOrder32Little | kCGImageAlphaNoneSkipFirst;
+    }
+    
+    CGColorRenderingIntent  renderingIntent     = kCGRenderingIntentDefault;
+    CGImageRef              imageRef            = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpaceRef, bitmapInfo, provider, NULL, NO, renderingIntent);
+    
+    ZBarImage* imgToScan = [[ZBarImage alloc] initWithCGImage:imageRef];
+    NSInteger resultCount = [[CameraPreviewManager sharedPreviewManager].imageScanner scanImage:imgToScan];
+    
+    [imgToScan release];
+    imgToScan = nil;
+    CGColorSpaceRelease(colorSpaceRef);
+    CGImageRelease(imageRef);
+    CGDataProviderRelease(provider);
+    FREReleaseBitmapData(objectBitmapData);
+    
+    if(resultCount > 0){
+        ZBarSymbolSet* results = [[CameraPreviewManager sharedPreviewManager].imageScanner results];
+        NSLog(@"Found barcodes!");
+        ZBarSymbol *sym = nil;
+        FREObject exception;
+        FRENewObject((uint8_t*)"Array", 0, nil, &retVal, &exception);
+        for(sym in results) {
+            if (sym) {
+                NSLog(@"Found barcode! quality: %d string: %@", sym.quality, sym.data);
+                FREObject strToAdd;
+                FRENewObjectFromUTF8(sym.data.length, (uint8_t*)[sym.data UTF8String], &strToAdd);
+                FRECallObjectMethod(retVal, (uint8_t*)"push", 1, &strToAdd, &exception, &exception);
+            }
+        }
+    }
+    
+    return retVal;
+}
 
 /*
  This has been removed from ASLib. Kept in case an use-case comes up to support this.

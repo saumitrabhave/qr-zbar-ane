@@ -293,10 +293,12 @@ public class Scanner extends EventDispatcher {
      * @param bitmap Bitmap to be scanned for Barcode as per the Config done in setConfig
      * @return Vector of String representing the Barcode detected. null otherwise
      */
-    public function scanBitmapData(bitmap:BitmapData):Vector.<String>{
-        //TODO: To be implemented
-        throw new Error("Function Not implemented yet.")
-        return null;
+    public function scanBitmapData(bitmap:BitmapData):Array{
+        var resp:Object = extCtx.call("scanBitmap",bitmap);
+        if(resp == null){
+            return null;
+        }
+        return resp as Array;
     }
 
     /**

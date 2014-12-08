@@ -24,6 +24,7 @@
 package com.sbhave.reader {
 import com.sbhave.reader.tests.MultiScanSimple;
 import com.sbhave.reader.tests.PreviewOrientation;
+import com.sbhave.reader.tests.ScanBitmapTest;
 import com.sbhave.reader.tests.SingleScanSimple;
 import com.sbhave.reader.tests.SizeAndPosition;
 
@@ -50,6 +51,8 @@ public class TestProvider {
         testsToRun.push(new MultiScanSimple());
         testsToRun.push(new PreviewOrientation());
         testsToRun.push(new SizeAndPosition());
+        testsToRun.push(new ScanBitmapTest());
+
 
 
     }

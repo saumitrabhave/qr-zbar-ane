@@ -369,4 +369,33 @@ public class CameraPreviewManager {
             Log.e("FRE", "Exception in Semaphore Release");
         }
     }
+
+    public String[] scanImage(Image myImage,ImageScanner scannerToUse) throws Exception{
+        String[] retVal = null;
+        ImageScanner currentScanner = null;
+        boolean restartScanning = false;
+        if(isScanning && scannerToUse.equals(mScanner)){
+            stopScanning();
+            restartScanning = true;
+        }
+        Log.e("saumitra","Now Scanning the Image");
+        if(scannerToUse.scanImage(myImage) != 0){
+            Log.e("saumitra","Found Codes");
+            SymbolSet syms = scannerToUse.getResults();
+            if(syms.size() > 0) {
+                retVal = new String[syms.size()];
+                int ctr = 0;
+                for (Symbol sym : syms) {
+                    Log.e("saumitra","Found....");
+                    retVal[ctr++] = sym.getData();
+                }
+            }
+        }
+
+        if(restartScanning) {
+            startScanning(scannerToUse);
+        }
+
+        return retVal;
+    }
 }

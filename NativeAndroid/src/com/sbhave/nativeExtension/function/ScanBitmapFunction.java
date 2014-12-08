@@ -23,13 +23,67 @@
 
 package com.sbhave.nativeExtension.function;
 
-import com.adobe.fre.FREContext;
-import com.adobe.fre.FREFunction;
-import com.adobe.fre.FREObject;
+import android.graphics.Bitmap;
+import android.util.Log;
+import com.adobe.fre.*;
+import com.sbhave.nativeExtension.QRExtensionContext;
+import com.sbhave.nativeExtension.ui.CameraPreviewManager;
+import net.sourceforge.zbar.Image;
+import net.sourceforge.zbar.ImageScanner;
+import net.sourceforge.zbar.Symbol;
+import net.sourceforge.zbar.SymbolSet;
 
+import java.util.Arrays;
+
+//Implementation Inspired From: https://github.com/luarpro/BitmapDataQRCodeScanner
 public class ScanBitmapFunction implements FREFunction {
     @Override
-    public FREObject call(FREContext freContext, FREObject[] freObjects) {
-        return null;
+    public FREObject call(FREContext freContext, FREObject[] args) {
+        FREObject retVal = null;
+        retVal = null;
+        QRExtensionContext qrCtx =(QRExtensionContext)freContext;
+
+        if(args.length != 1){
+            Log.e("saumitra","Error, Invalid number of arguments in scanBitmap");
+        }
+
+        try {
+            FREBitmapData inputValue = (FREBitmapData)args[0];
+
+            inputValue.acquire();
+
+            int width = inputValue.getWidth();
+            int height = inputValue.getHeight();
+
+            int[] pixels = new int[width * height];
+            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            bmp.copyPixelsFromBuffer(inputValue.getBits());
+
+            bmp.getPixels(pixels, 0, width, 0, 0, width, height);
+
+            Image myImage = new Image(width, height, "RGB4");
+            myImage.setData(pixels);
+            myImage = myImage.convert("Y800");
+
+            String[] results = qrCtx.getPreviewManager().scanImage(myImage,qrCtx.getScanner());
+            inputValue.release();
+            if (results != null && results.length > 0){
+                FREArray freArray = FREArray.newArray(results.length);
+
+                for(int ctr=0; ctr < results.length; ctr++){
+                    FREObject freString = FREObject.newObject(results[ctr]);
+                    freArray.setObjectAt(ctr, freString);
+                }
+                retVal = freArray;
+            }
+
+
+
+        } catch (Exception e) {
+            Log.e("saumitra","Got Exception",e)  ;
+            return null;
+        }
+
+        return retVal;
     }
 }
