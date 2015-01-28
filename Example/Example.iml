@@ -25,7 +25,7 @@
           <files-to-package>
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/assets" path-in-package="." />
           </files-to-package>
-          <AirSigningOptions sdk="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk" keystore-path="$MODULE_DIR$/../../../creds/abc123-ios.p12" provisioning-profile-path="$MODULE_DIR$/../../../creds/sbhavedemo.mobileprovision" />
+          <AirSigningOptions keystore-path="$MODULE_DIR$/../../../creds/abc123-ios.p12" provisioning-profile-path="$MODULE_DIR$/../../../creds/sbhavedemo.mobileprovision" />
         </packaging-ios>
       </configuration>
     </configurations>

@@ -22,7 +22,7 @@
   ~ File : /Users/saumib/projects/repos/qr-zbar-ane/Example/src/reader-app.xml
   -->
 
-<application xmlns="http://ns.adobe.com/air/application/15.0">
+<application xmlns="http://ns.adobe.com/air/application/16.0">
 
 <!-- Adobe AIR Application Descriptor File Template.
 
