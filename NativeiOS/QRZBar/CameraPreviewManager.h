@@ -24,6 +24,7 @@
 #import <Foundation/Foundation.h>
 #import "FlashRuntimeExtensions.h"
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface CameraPreviewManager : NSObject<ZBarReaderViewDelegate>{
     int _defaultResize;

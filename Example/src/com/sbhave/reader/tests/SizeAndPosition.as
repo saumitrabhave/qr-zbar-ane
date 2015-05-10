@@ -133,7 +133,11 @@ public class SizeAndPosition extends TestCase{
     private function launchBackPreview():void {
         trace("starting Back Cam");
         currentCam = "";
-        s.startPreview(currentCam,50,150,300,300);
+
+        // iOS8 authorize Camera if required a boolean is returned indicating
+        // NO, if Camera Preview is in progress already or the access is denied.
+        var perm:Boolean = s.startPreview(currentCam,50,150,300,300);
+        Logger.printLine("Camera Permission Back: " + perm);
 
         var x:Vector.<Size> = s.getAvailablePreviewSizes();
         for each(var sz:Size in x){
@@ -149,7 +153,12 @@ public class SizeAndPosition extends TestCase{
     private function launchFrontPreview():void {
         trace("starting Front Cam");
         currentCam = "front";
-        s.startPreview(currentCam);
+
+        // iOS8 authorize Camera if required a boolean is returned indicating
+        // NO, if Camera Preview is in progress already or the access is denied.
+        var perm:Boolean = s.startPreview(currentCam);
+        Logger.printLine("Camera Permission Front: " + perm);
+
         s.setDimensions(300,300);
         s.setPosition(50,150);
         onResize(new Event("DUMMY")); //Align on Launch

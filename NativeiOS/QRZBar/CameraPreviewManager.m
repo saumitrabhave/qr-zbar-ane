@@ -25,7 +25,7 @@
 #import "CameraPreviewManager.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
+
 
 static CameraPreviewManager *sharedMyManager = nil;
 static dispatch_once_t onceToken = 0;

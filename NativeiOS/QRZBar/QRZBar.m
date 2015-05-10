@@ -103,6 +103,9 @@ SBH_FREFUNCTION(startPreview)
     uint8_t* camPos = nil;
     NSString* camPosStr = nil;
     
+    __block BOOL camPermission = NO;
+    dispatch_semaphore_t sem = dispatch_semaphore_create(0);
+    
     // Read ActionScript Function Parameters
     FREGetObjectAsUTF8(argv[0], &len, (const uint8_t**)&camPos);
     FREGetObjectAsInt32(argv[1], &x);
@@ -120,7 +123,40 @@ SBH_FREFUNCTION(startPreview)
     if(w < 0) w = [[ CameraPreviewManager sharedPreviewManager].freRootView bounds].size.width;
     if(h < 0) h = [[ CameraPreviewManager sharedPreviewManager].freRootView bounds].size.height;
     
-    if(![CameraPreviewManager sharedPreviewManager].previewing)
+    // Check for Camera Permission on iOS 7/8.
+    // Taken From http://stackoverflow.com/questions/25803217/presenting-camera-permission-dialog-in-ios-8
+    
+    if ([AVCaptureDevice respondsToSelector:@selector(requestAccessForMediaType: completionHandler:)]) {
+        NSLog(@"Camera Auth Required");
+        if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusNotDetermined) {
+            NSLog(@"Camera Auth Required for the first time");
+            [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+                // Will get here on both iOS 7 & 8 even though camera permissions weren't required
+                // until iOS 8. So for iOS 7 permission will always be granted.
+                if (granted) {
+                    // Permission has been granted. Use dispatch_async for any UI updating
+                    // code because this block may be executed in a thread.
+                    camPermission = YES;
+                    NSLog(@"Permission granted unlock the semaphore");
+                }
+                dispatch_semaphore_signal(sem);
+            }];
+        } else {
+            NSLog(@"Auth Decision made already");
+            camPermission = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] != AVAuthorizationStatusDenied;
+            dispatch_semaphore_signal(sem);
+        }
+    } else {
+        // We are on iOS <= 6. Just do what we need to do.
+        NSLog(@"Camera Auth NOT Required");
+        camPermission = YES;
+    }
+    
+    NSLog(@"Waiting on Semaphore");
+    dispatch_semaphore_wait(sem, DISPATCH_TIME_FOREVER);
+    NSLog(@"Semaphore wait done");
+    
+    if(![CameraPreviewManager sharedPreviewManager].previewing && camPermission)
     {
         NSLog(@"Calling Preview Manager");
         [[CameraPreviewManager sharedPreviewManager] startPreviewWithCamera:camPosStr atPostion:CGRectMake(x, y, w, h)];
