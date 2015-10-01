@@ -5,7 +5,7 @@
 ##### How To Use:
 This library exposes APIs that will allow application developer to Scan the Barcodes in following two ways.
 - __From Live Camera Feed__: You can place a camera feed (Rear or Front) using library APIs and just attach scanner to the feed to get DATA events whenever your Camera "sees" a Barcode.
-- __From Bitmap/Image__: Developer can provide an arbitary Image to Scan for a Barcode. *(Work In Progress)*
+- __From Bitmap/Image__: Developer can provide an arbitrary Image to Scan for a Barcode. *(Work In Progress)*
 
 __Get Started__: 
 
