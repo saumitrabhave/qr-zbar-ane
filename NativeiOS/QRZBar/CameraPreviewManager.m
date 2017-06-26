@@ -26,8 +26,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-
-static CameraPreviewManager *sharedMyManager = nil;
 static dispatch_once_t onceToken = 0;
 
 @interface CameraPreviewManager ()
@@ -89,7 +87,6 @@ static dispatch_once_t onceToken = 0;
     self.readerView = nil;
     sharedMyManager = nil;
     onceToken = 0;
-    [super dealloc];
 }
 
 -(void) resetScanner
@@ -100,7 +97,6 @@ static dispatch_once_t onceToken = 0;
     
     ZBarImageScanner* is = [[ZBarImageScanner alloc] init];
     self.imageScanner = is;
-    [is release];            // imageScanner is reatain Property.
     
     // Set Defaults
     [self.imageScanner setSymbology:ZBAR_NONE config:ZBAR_CFG_X_DENSITY to:1];
@@ -114,14 +110,12 @@ static dispatch_once_t onceToken = 0;
     NSLog(@"Creating ReaderView");
     ZBarReaderView* rv = [[ZBarReaderView alloc] initWithImageScanner:self.imageScanner];
     self.readerView = rv;
-    [rv release];
     
     //The setup code (in viewDidLoad in your view controller)
     UITapGestureRecognizer *singleFingerTap =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(handleSingleTap:)];
     [self.readerView addGestureRecognizer:singleFingerTap];
-    [singleFingerTap release];
     
     NSLog(@"Setting Camera");
     self.readerView.device = [self getCameraDeviceAtPostion:cameraPosition];
@@ -146,7 +140,7 @@ static dispatch_once_t onceToken = 0;
     [self.readerView start];
     
     self.readerView.readerDelegate = self;
-    NSLog(@"ReaderView RetainCount: %lu",(unsigned long)[self.readerView retainCount]);
+    NSLog(@"Start Preview Implementation Complete");
 }
 
 -(void) stopPreview
@@ -163,7 +157,7 @@ static dispatch_once_t onceToken = 0;
 -(void) setOrientation:(UIInterfaceOrientation)orientation
 {
     if(self.readerView != nil){
-        NSLog(@"Moving to %d",orientation);
+        NSLog(@"Moving to %ld",(long)orientation);
         [self.readerView willRotateToInterfaceOrientation:orientation duration:0];
         [self.readerView setNeedsLayout];
     }

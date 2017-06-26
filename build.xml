@@ -1,59 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="qr-zbar-ane" default="ane">
 
-    <!-- Load the environment-specific properties -->
-    <property file="build.properties" />
+  <!-- Load the environment-specific properties -->
+  <property file="build.properties" />
 
-    <!-- Sets the FlexTasks.jar file that contains the build tasks -->
-    <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+  <!-- Sets the FlexTasks.jar file that contains the build tasks -->
+  <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
 
-    <target name="clean">
-      <delete file="output/library.swf"/>
-      <delete file="output/catalog.xml"/>
-      <delete file="output/extension.xml"/>
-      <delete file="output/platformoptions.xml"/>
-      <delete dir="output/res"/>
-      <delete dir="output/libs"/>
+  <target name="swc">
+    <compc debug="false" output="${OUTPUT_DIR}/ASLib.swc" swf-version='19'>
+      <source-path path-element="${SWC_SOURCE_DIR}/"/>
+      <include-sources dir="${SWC_SOURCE_DIR}/" includes="*" />
+      <external-library-path dir="${AIR_SDK_HOME}/frameworks/libs/air/" includes="airglobal.swc" append="true"/>
+      <compiler.define name="CONFIG::simulator" value="false" />
+    </compc>
+    <compc debug="false" output="Default/ASLib.swc" swf-version='19'>
+      <source-path path-element="${SWC_SOURCE_DIR}/"/>
+      <include-sources dir="${SWC_SOURCE_DIR}/" includes="*" />
+      <external-library-path dir="${AIR_SDK_HOME}/frameworks/libs/air/" includes="airglobal.swc" append="true"/>
+      <compiler.define name="CONFIG::simulator" value="true" />
+    </compc>
   </target>
 
-  <target name="res" depends="clean" description="Build ane given that needed jar and swc are already present in output">
-        <unzip src="output/ASLib.swc" dest="output"/>
+  <target name="clean">
+    <delete file="output/library.swf"/>
+    <delete file="output/catalog.xml"/>
+    <delete file="output/extension.xml"/>
+    <delete file="output/platformoptions.xml"/>
+    <delete dir="output/res"/>
+    <delete dir="output/libs"/>
+  </target>
 
-        <copy todir="output/res">
-          <fileset dir="NativeAndroid/res"/>
-        </copy>
+  <target name="res" depends="clean,swc" description="Build ane given that needed jar and swc are already present in output">
+    <unzip src="output/ASLib.swc" dest="output"/>
+    <unzip src="Default/ASLib.swc" dest="Default"/>
+    <copy file="extension.xml" todir="output"/>
+    <copy file="platformoptions.xml" todir="output"/>
 
-        <copy todir="output/libs">
-            <fileset dir="NativeAndroid/libs"/>
-        </copy>
+    <copy todir="output/res">
+      <fileset dir="NativeAndroid/res"/>
+    </copy>
 
-        <copy todir="output/Resources">
-          <fileset dir="NativeiOS/QRZBar/ZBarSDK/Resources"/>
-        </copy>
-   </target>
+    <copy todir="output/libs">
+      <fileset dir="NativeAndroid/libs"/>
+    </copy>
 
-    <target name="ane" description="Create the AIR package" depends="res">
-        <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true">
-            <arg line="-package"/>
-            <arg line="-target ane"/>
-            <arg line="qreader.ane"/>
-            <arg line="output/extension.xml"/>
-            <arg line="-swc output/ASLib.swc"/>
-            <arg line="-platform Android-ARM"/>
-            <arg line="-C output/ library.swf"/>
-            <arg line="-C output/ NativeAndroid.jar"/>
-            <arg line="-C output/ libs"/>
-            <arg line="-C output/ res"/>
-            <arg line="-platform iPhone-ARM"/>
-            <arg line="-C output/ library.swf"/>
-            <arg line="-C output/ libQRZBar.a"/>
-            <arg line="-C output/Resources zbar-help.html"/>
-            <arg line="-platformoptions output/platformoptions.xml"/>
-            <arg line="-platform default"/>
-            <arg line="-C Default library.swf"/>
-        </java>
-        <!-- -package -target ane qreader.ane extension.xml -swc androidAS.swc -platform Android-ARM library.swf native.jar
-        ./libs ./res -platform iPhone-ARM library.swf libQRZBar.a -C Resources/ zbar-help.html -platformoptions platformoptions.xml
-        -->
-    </target>
+    <copy todir="output/Resources">
+      <fileset dir="NativeiOS/QRZBar/ZBarSDK/Resources"/>
+    </copy>
+  </target>
+
+  <target name="android">
+    <delete dir="NativeAndroid/classes"/>
+    <mkdir dir="NativeAndroid/classes"/>
+    <javac target="1.7" source="1.7" includeantruntime="false" classpath="NativeAndroid/libs/FlashRuntimeExtensions.jar;${ANDROID_PLATFORM_DIR}/android.jar" srcdir="NativeAndroid/src" destdir="NativeAndroid/classes" />
+    <jar destfile="${OUTPUT_DIR}/NativeAndroid.jar" basedir="NativeAndroid/classes"></jar>
+  </target>
+
+  <target name="ios">
+    <exec dir="NativeiOS/" executable="bash" failonerror="true">
+      <arg value="-c"/>
+      <arg value="xcodebuild clean build | xcpretty"/>
+    </exec>
+  </target>
+
+  <target name="ane" description="Create the AIR package" depends="res">
+    <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true">
+      <arg line="-package"/>
+      <arg line="-target ane"/>
+      <arg line="qreader.ane"/>
+      <arg line="output/extension.xml"/>
+      <arg line="-swc output/ASLib.swc"/>
+      <arg line="-platform Android-ARM"/>
+      <arg line="-C output/ library.swf"/>
+      <arg line="-C output/ NativeAndroid.jar"/>
+      <arg line="-C output/ libs"/>
+      <arg line="-C output/ res"/>
+      <arg line="-platform iPhone-ARM"/>
+      <arg line="-C output/ library.swf"/>
+      <arg line="-C output/ libQRZBar.a"/>
+      <arg line="-C output/Resources zbar-help.html"/>
+      <arg line="-platformoptions output/platformoptions.xml"/>
+      <arg line="-platform default"/>
+      <arg line="-C Default library.swf"/>
+    </java>
+    <!-- -package -target ane qreader.ane extension.xml -swc androidAS.swc -platform Android-ARM library.swf native.jar
+    ./libs ./res -platform iPhone-ARM library.swf libQRZBar.a -C Resources/ zbar-help.html -platformoptions platformoptions.xml
+  -->
+</target>
+<target name="example">
+  <mxmlc
+    file="Example/src/reader.as"
+    output="Example/build/reader.swf"
+    static-rsls="false"
+    accessible="false"
+    configname="airmobile"
+    debug="true"
+    failonerror="true"
+    fork="true"
+    maxmemory="512m">
+    <source-path path-element="Example/src"/>
+    <external-library-path dir="output" includes="ASLib.swc" append="true"/>
+  </mxmlc>
+  <copy file="Example/src/reader-app.xml" todir="Example/build/"/>
+  <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true">
+    <arg line="-package"/>
+    <arg line="-target apk-debug"/>
+    <arg line="-storetype PKCS12"/>
+    <arg line="-keystore certs/apk-debug.p12"/>
+    <arg line="-storepass android"/>
+    <arg line="reader.apk"/>
+    <arg line="Example/build/reader-app.xml"/>
+    <arg line="-C Example/build reader.swf"/>
+    <arg line="-C Example/assets ."/>
+    <arg line="-extdir ."/>
+  </java>
+  <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true">
+    <arg line="-package"/>
+    <arg line="-target ipa-test-interpreter"/>
+    <arg line="-storetype PKCS12"/>
+    <arg line="-keystore certs/ipa-debug.p12"/>
+    <arg line="-storepass abc123"/>
+    <arg line="-provisioning-profile certs/ipa.mobileprovision"/>
+    <arg line="reader.ipa"/>
+    <arg line="Example/build/reader-app.xml"/>
+    <arg line="-C Example/build reader.swf"/>
+    <arg line="-C Example/assets ."/>
+    <arg line="-extdir ."/>
+  </java>
+</target>
 </project>
