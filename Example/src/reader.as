@@ -34,6 +34,9 @@ import flash.display.StageQuality;
 import flash.display.StageScaleMode;
 import flash.events.Event;
 import flash.events.MouseEvent;
+import flash.media.Camera;
+import flash.permissions.PermissionStatus;
+import flash.events.PermissionEvent;
 
 public class reader extends Sprite
 {
@@ -69,13 +72,32 @@ public class reader extends Sprite
     }
 
     private function start(e:Event):void {
-        //Second ENTER FRAME is when we have our stageWidth and stageHeight set properly.
         if(c > 1){
             trace("-----APP STARTING-----\n");
             this.stage.removeEventListener(Event.ENTER_FRAME,start);
             var testProvider:TestProvider = new TestProvider();
             _harness = new Harness(testProvider,this.stage);
             _harness.start();
+            if (Camera.isSupported) {
+                var cam = Camera.getCamera();
+
+                if (Camera.permissionStatus != PermissionStatus.GRANTED)
+                {
+                    cam.addEventListener(PermissionEvent.PERMISSION_STATUS, function(e:PermissionEvent):void {
+                        if (e.status == PermissionStatus.GRANTED) {
+                            trace("Camera Permission Granted");
+                        } else {
+                            trace("Camera Permission Granted");
+                        }
+                    });
+
+                    try {
+                        cam.requestPermission();
+                    } catch(e:Error) {
+                        trace("Error while asking for cam permissions");
+                    }
+                }
+            }
         }
         c++;
     }

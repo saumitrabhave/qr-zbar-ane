@@ -20,7 +20,6 @@
 		BFD126B714EBC37C00042533 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126B614EBC37C00042533 /* CoreMedia.framework */; };
 		BFD126B914EBC38500042533 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126B814EBC38500042533 /* CoreVideo.framework */; };
 		BFD126BB14EBC39000042533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126BA14EBC39000042533 /* QuartzCore.framework */; };
-		BFD126BD14EBC39E00042533 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126BC14EBC39E00042533 /* libiconv.dylib */; };
 		BFD126E014EBCE3C00042533 /* Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126C614EBCE3C00042533 /* Decoder.h */; };
 		BFD126E114EBCE3C00042533 /* Exception.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126C714EBCE3C00042533 /* Exception.h */; };
 		BFD126E214EBCE3C00042533 /* Image.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126C814EBCE3C00042533 /* Image.h */; };
@@ -71,7 +70,6 @@
 		BFD126B614EBC37C00042533 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		BFD126B814EBC38500042533 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		BFD126BA14EBC39000042533 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BFD126BC14EBC39E00042533 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		BFD126C614EBCE3C00042533 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		BFD126C714EBCE3C00042533 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		BFD126C814EBCE3C00042533 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFD126BD14EBC39E00042533 /* libiconv.dylib in Frameworks */,
 				BFD126BB14EBC39000042533 /* QuartzCore.framework in Frameworks */,
 				BFD126B914EBC38500042533 /* CoreVideo.framework in Frameworks */,
 				BFD126B714EBC37C00042533 /* CoreMedia.framework in Frameworks */,
@@ -129,7 +126,6 @@
 		BFD1267614EBB7D700042533 = {
 			isa = PBXGroup;
 			children = (
-				BFD126BC14EBC39E00042533 /* libiconv.dylib */,
 				BFD126BA14EBC39000042533 /* QuartzCore.framework */,
 				BFD126B814EBC38500042533 /* CoreVideo.framework */,
 				BFD126B614EBC37C00042533 /* CoreMedia.framework */,
@@ -498,7 +494,7 @@
 		BFD126A614EBB7D800042533 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = ../output;
 				CONFIGURATION_TEMP_DIR = ../out;
 				DSTROOT = /tmp/QRZBar.dst;
@@ -514,7 +510,10 @@
 					"\"$(SRCROOT)/QRZBar/ZBarSDK\"",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-liconv",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;
@@ -525,7 +524,7 @@
 		BFD126A714EBB7D800042533 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CONFIGURATION_BUILD_DIR = ../output;
 				CONFIGURATION_TEMP_DIR = ../out;
 				COPY_PHASE_STRIP = YES;
@@ -542,7 +541,10 @@
 					"\"$(SRCROOT)/QRZBar/ZBarSDK\"",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-liconv",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;

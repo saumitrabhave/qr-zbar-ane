@@ -53,3 +53,4 @@
 -(void)dealloc;
 
 @end
+static CameraPreviewManager *sharedMyManager = nil;

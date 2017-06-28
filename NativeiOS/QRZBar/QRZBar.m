@@ -353,8 +353,6 @@ SBH_FREFUNCTION(scanBitmap)
     
     ZBarImage* imgToScan = [[ZBarImage alloc] initWithCGImage:imageRef];
     NSInteger resultCount = [[CameraPreviewManager sharedPreviewManager].imageScanner scanImage:imgToScan];
-    
-    [imgToScan release];
     imgToScan = nil;
     CGColorSpaceRelease(colorSpaceRef);
     CGImageRelease(imageRef);
@@ -428,7 +426,7 @@ void FRE_PFX(ContextFinalizer)(FREContext ctx) {
     
     NSLog(@"Entering ContextFinalizer()");
     
-    [[CameraPreviewManager sharedPreviewManager] release];
+    sharedMyManager = nil;
     
     NSLog(@"Exiting ContextFinalizer()");
     

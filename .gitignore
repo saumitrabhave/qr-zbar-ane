@@ -3,3 +3,14 @@ output/
 NativeAndroid/gen
 .DS_Store
 NativeiOS/build/
+Default/ASLib.swc
+Default/catalog.xml
+Example/build/
+NativeAndroid/classes/
+NativeiOS/DerivedData/
+certs/
+reader.apk
+reader.app.dSYM/
+reader.ipa
+reader.zip
+reader/
