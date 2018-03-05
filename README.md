@@ -1,3 +1,5 @@
+## _Deprecation Warning:_
+I am not able maintain this repository anymore due to time constraints and also because I am not up to date with Adobe AIR developments.
 # Barcode Scanning for AIR Mobile Apps
 ## A Native Extension thats Fast and Smooth!
 #### This library uses the [ZBar](https://github.com/ZBar/ZBar) Reader under the hood to provide barcode scanning for actionscript applications running on AIR Android or iOS.This supports QR Codes, EAN13, EAN8 and [Many More!!](https://github.com/saumitrabhave/qr-zbar-ane/blob/master/ASLib/src/com/sbhave/nativeExtensions/zbar/Symbology.as)
