@@ -7,19 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BFD1268514EBB7D800042533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD1268414EBB7D800042533 /* Foundation.framework */; };
+		702A229624CA1809000E0E13 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126DA14EBCE3C00042533 /* libzbar.a */; };
+		70F681B124C95C22004E797E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F681B024C95C22004E797E /* QuartzCore.framework */; };
+		70F681B324C95C41004E797E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F681B224C95C41004E797E /* CoreVideo.framework */; };
+		70F681B524C95C4E004E797E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F681B424C95C4E004E797E /* CoreMedia.framework */; };
+		70F681B724C95C6F004E797E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F681B624C95C6F004E797E /* AVFoundation.framework */; };
+		70F681B924C95C7D004E797E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F681B824C95C7D004E797E /* Foundation.framework */; };
 		BFD1268B14EBB7D800042533 /* QRZBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD1268A14EBB7D800042533 /* QRZBar.m */; };
-		BFD1269614EBB7D800042533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD1268414EBB7D800042533 /* Foundation.framework */; };
-		BFD1269914EBB7D800042533 /* libQRZBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD1268114EBB7D700042533 /* libQRZBar.a */; };
 		BFD1269F14EBB7D800042533 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFD1269D14EBB7D800042533 /* InfoPlist.strings */; };
 		BFD126A214EBB7D800042533 /* QRZBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD126A114EBB7D800042533 /* QRZBarTests.m */; };
 		BFD126AC14EBB90700042533 /* FlashRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126AB14EBB90700042533 /* FlashRuntimeExtensions.h */; };
 		BFD126AF14EBB94B00042533 /* CameraPreviewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126AD14EBB94B00042533 /* CameraPreviewManager.h */; };
 		BFD126B014EBB94B00042533 /* CameraPreviewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD126AE14EBB94B00042533 /* CameraPreviewManager.m */; };
-		BFD126B514EBC37300042533 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126B414EBC37300042533 /* AVFoundation.framework */; };
-		BFD126B714EBC37C00042533 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126B614EBC37C00042533 /* CoreMedia.framework */; };
-		BFD126B914EBC38500042533 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126B814EBC38500042533 /* CoreVideo.framework */; };
-		BFD126BB14EBC39000042533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126BA14EBC39000042533 /* QuartzCore.framework */; };
 		BFD126E014EBCE3C00042533 /* Decoder.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126C614EBCE3C00042533 /* Decoder.h */; };
 		BFD126E114EBCE3C00042533 /* Exception.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126C714EBCE3C00042533 /* Exception.h */; };
 		BFD126E214EBCE3C00042533 /* Image.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126C814EBCE3C00042533 /* Image.h */; };
@@ -40,7 +39,6 @@
 		BFD126F114EBCE3C00042533 /* ZBarReaderViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126D714EBCE3C00042533 /* ZBarReaderViewController.h */; };
 		BFD126F214EBCE3C00042533 /* ZBarSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126D814EBCE3C00042533 /* ZBarSDK.h */; };
 		BFD126F314EBCE3C00042533 /* ZBarSymbol.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD126D914EBCE3C00042533 /* ZBarSymbol.h */; };
-		BFD126F414EBCE3C00042533 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD126DA14EBCE3C00042533 /* libzbar.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70F681B024C95C22004E797E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		70F681B224C95C41004E797E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		70F681B424C95C4E004E797E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		70F681B624C95C6F004E797E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		70F681B824C95C7D004E797E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		70F681BA24C95CE7004E797E /* QRZBar */ = {isa = PBXFileReference; lastKnownFileType = folder; path = QRZBar; sourceTree = "<group>"; };
+		70F681BC24C95CF9004E797E /* ZBarSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ZBarSDK; path = QRZBar/ZBarSDK; sourceTree = "<group>"; };
 		BFD1268114EBB7D700042533 /* libQRZBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libQRZBar.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFD1268414EBB7D800042533 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFD1268814EBB7D800042533 /* QRZBar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRZBar-Prefix.pch"; sourceTree = "<group>"; };
 		BFD1268A14EBB7D800042533 /* QRZBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QRZBar.m; sourceTree = "<group>"; };
 		BFD1269114EBB7D800042533 /* QRZBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRZBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,10 +70,6 @@
 		BFD126AB14EBB90700042533 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
 		BFD126AD14EBB94B00042533 /* CameraPreviewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPreviewManager.h; sourceTree = "<group>"; };
 		BFD126AE14EBB94B00042533 /* CameraPreviewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPreviewManager.m; sourceTree = "<group>"; };
-		BFD126B414EBC37300042533 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BFD126B614EBC37C00042533 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		BFD126B814EBC38500042533 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		BFD126BA14EBC39000042533 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BFD126C614EBCE3C00042533 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		BFD126C714EBCE3C00042533 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		BFD126C814EBCE3C00042533 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -102,12 +102,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFD126BB14EBC39000042533 /* QuartzCore.framework in Frameworks */,
-				BFD126B914EBC38500042533 /* CoreVideo.framework in Frameworks */,
-				BFD126B714EBC37C00042533 /* CoreMedia.framework in Frameworks */,
-				BFD126B514EBC37300042533 /* AVFoundation.framework in Frameworks */,
-				BFD1268514EBB7D800042533 /* Foundation.framework in Frameworks */,
-				BFD126F414EBCE3C00042533 /* libzbar.a in Frameworks */,
+				702A229624CA1809000E0E13 /* libzbar.a in Frameworks */,
+				70F681B924C95C7D004E797E /* Foundation.framework in Frameworks */,
+				70F681B724C95C6F004E797E /* AVFoundation.framework in Frameworks */,
+				70F681B524C95C4E004E797E /* CoreMedia.framework in Frameworks */,
+				70F681B324C95C41004E797E /* CoreVideo.framework in Frameworks */,
+				70F681B124C95C22004E797E /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,8 +115,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFD1269614EBB7D800042533 /* Foundation.framework in Frameworks */,
-				BFD1269914EBB7D800042533 /* libQRZBar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,10 +124,6 @@
 		BFD1267614EBB7D700042533 = {
 			isa = PBXGroup;
 			children = (
-				BFD126BA14EBC39000042533 /* QuartzCore.framework */,
-				BFD126B814EBC38500042533 /* CoreVideo.framework */,
-				BFD126B614EBC37C00042533 /* CoreMedia.framework */,
-				BFD126B414EBC37300042533 /* AVFoundation.framework */,
 				BFD1268614EBB7D800042533 /* QRZBar */,
 				BFD1269A14EBB7D800042533 /* QRZBarTests */,
 				BFD1268314EBB7D800042533 /* Frameworks */,
@@ -149,7 +143,13 @@
 		BFD1268314EBB7D800042533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BFD1268414EBB7D800042533 /* Foundation.framework */,
+				70F681BC24C95CF9004E797E /* ZBarSDK */,
+				70F681BA24C95CE7004E797E /* QRZBar */,
+				70F681B824C95C7D004E797E /* Foundation.framework */,
+				70F681B624C95C6F004E797E /* AVFoundation.framework */,
+				70F681B424C95C4E004E797E /* CoreMedia.framework */,
+				70F681B224C95C41004E797E /* CoreVideo.framework */,
+				70F681B024C95C22004E797E /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -336,12 +336,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0610;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Saumitra R Bhave";
 			};
 			buildConfigurationList = BFD1267B14EBB7D700042533 /* Build configuration list for PBXProject "QRZBar" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -429,19 +429,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -456,7 +467,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -465,18 +477,28 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -485,7 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -504,10 +526,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRZBar/QRZBar-Prefix.pch";
 				GCC_VERSION = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QRZBar/ZBarSDK\"",
+					"$(PROJECT_DIR)/QRZBar/ZBarSDK",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				OTHER_LDFLAGS = (
@@ -517,7 +540,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Debug;
 		};
@@ -535,10 +557,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRZBar/QRZBar-Prefix.pch";
 				GCC_VERSION = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/QRZBar/ZBarSDK\"",
+					"$(PROJECT_DIR)/QRZBar/ZBarSDK",
 				);
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				OTHER_LDFLAGS = (
@@ -548,14 +571,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = "armv7 arm64";
 			};
 			name = Release;
 		};
 		BFD126A914EBB7D800042533 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -563,7 +584,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRZBar/QRZBar-Prefix.pch";
 				INFOPLIST_FILE = "QRZBarTests/QRZBarTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rancondev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -571,7 +593,6 @@
 		BFD126AA14EBB7D800042533 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -579,7 +600,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QRZBar/QRZBar-Prefix.pch";
 				INFOPLIST_FILE = "QRZBarTests/QRZBarTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rancondev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
